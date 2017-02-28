@@ -10,7 +10,7 @@
 # Erdiko.  It is lean enough for prod or dev.
 ############################################################
 
-FROM php:5.6-fpm
+FROM php:7.0-fpm
 
 # File Author / Maintainer
 MAINTAINER John Arroyo, john@arroyolabs.com
