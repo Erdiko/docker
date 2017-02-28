@@ -4,7 +4,4 @@ services:
   php:
     container_name: erdiko_php_5_6
     env_file: ../environment.env
-    image: erdiko_phpfpm_5_6
-    build:
-      context: ./
-      dockerfile: Dockerfile-5_6
+    image: erdiko/php-fpm:5.6
