@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  php:
+    container_name: erdiko_php_5_4
+    env_file: ../environment.env
+    image: erdiko_phpfpm_5_4
+    build:
+      context: ./
+      dockerfile: Dockerfile-5_4

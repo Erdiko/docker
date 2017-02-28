@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  php:
+    container_name: erdiko_php
+    env_file: ../environment.env
+    image: erdiko/php-fpm:latest

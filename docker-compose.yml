@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  data:
+    image: busybox
+    volumes:
+      - ../erdiko-dev:/code
+      - ../erdiko-core:/erdiko-core
+      - ../erdiko-wordpress:/erdiko-wordpress 
+
+  webserver:
+    extends:
+      file: ./nginx/docker-compose.yml
+      service: webserver
+    volumes_from: [data]
+
+  php:
+    container_name: erdiko_php
+    env_file: ./environment.env
+    image: erdiko/php-fpm:latest
+    volumes_from: [data]
