@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  lamp:
+    container_name: erdiko_lamp
+    env_file: ./environment.env
+    image: erdiko/php-fpm:lamp
+    volumes:
+      - ./nginx/site.conf:/etc/nginx/conf.d/site.conf
+      - ./nginx/fastcgi.conf:/etc/nginx/fastcgi.conf
+      # - ./mysql/conf.d/erdiko.cnf:/etc/mysql/conf.d/erdiko.cnf
+    ports:
+      - "8088:80"
+      - "3306:3306"
