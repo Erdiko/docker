@@ -39,8 +39,8 @@ COPY code /code
 RUN cd /src && chmod 770 *.sh
 RUN /src/composer.sh
 RUN /src/phpunit.sh
-RUN /src/nginx.sh
-# RUN /src/mysql.sh
+RUN /src/mysql-install.sh
+RUN /src/boot.sh
 
 EXPOSE 9000
 EXPOSE 80

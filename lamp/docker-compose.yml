@@ -12,5 +12,5 @@ services:
       - ./nginx/fastcgi.conf:/etc/nginx/fastcgi.conf
       - ./mysql/conf.d/erdiko.cnf:/etc/mysql/conf.d/erdiko.cnf
     ports:
-      - "8088:80"
+      - "80:80"
       - "3306:3306"
