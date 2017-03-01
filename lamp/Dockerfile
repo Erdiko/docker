@@ -20,7 +20,6 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get install -y wget \
         git \
-        mysql-server \
         mysql-client \
         nginx \
         curl \
@@ -41,7 +40,7 @@ RUN cd /src && chmod 770 *.sh
 RUN /src/composer.sh
 RUN /src/phpunit.sh
 RUN /src/nginx.sh
-RUN /src/mysql.sh
+# RUN /src/mysql.sh
 
 EXPOSE 9000
 EXPOSE 80
