@@ -7,4 +7,9 @@ apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5
 apt-get update
 apt-get install -y mysql-server
 
-# service mysql start
+service mysql start
+
+# similar to mysql_secure_installation
+mysql < mysql_secure_installation.sql
+
+/usr/sbin/update-rc.d mysql defaults
