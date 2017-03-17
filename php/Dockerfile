@@ -25,6 +25,7 @@ RUN apt-get update \
         pwgen \
         libmcrypt-dev \
         libpng-dev \
+        zip \
     && docker-php-ext-install mysqli \
         pdo_mysql \
         mcrypt \
