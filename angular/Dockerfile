@@ -1,5 +1,5 @@
 ############################################################
-# Node container for AngularX and SASS development
+# Node container for Angular development
 ############################################################
 
 # Set the base image to Node
