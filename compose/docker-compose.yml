@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+
+  compose:
+    container_name: erdiko_compose
+    image: erdiko_docker_compose
+    build:
+      context: ./
