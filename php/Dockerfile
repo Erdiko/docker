@@ -5,8 +5,8 @@
 # php extensions: mcrypt, gd, mysql
 # linux packages: mysql-client, git, curl, wget, pwgen
 #
-# This is a good container for php development and includes 
-# common tools needed in a PHP app.  Use with or without 
+# This is a good container for php development and includes
+# common tools needed in a PHP app.  Use with or without
 # Erdiko.  It is lean enough for prod or dev.
 ############################################################
 
@@ -21,15 +21,20 @@ RUN apt-get update \
     && apt-get install -y wget \
         git \
         mysql-client \
-        curl \
         pwgen \
         libmcrypt-dev \
         libpng-dev \
         zip \
+        libyaml-dev \
     && docker-php-ext-install mysqli \
         pdo_mysql \
         mcrypt \
-        gd \
+        mbstring \
+        gd
+
+RUN printf "\n" | pecl install yaml-2.0.0 \
+    && docker-php-ext-enable yaml \
+    # && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini \
     && apt-get clean
 
 # Install additional scripts (composer and phpunit)
