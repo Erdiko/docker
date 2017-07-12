@@ -12,7 +12,7 @@ MAINTAINER John Arroyo, john@arroyolabs.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get upgrade && apt-get install -y curl git
+RUN apt-get update && apt-get upgrade && apt-get install -y curl git wget
 
 RUN VER="17.03.1-ce" && \
     curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz && \
