@@ -40,8 +40,9 @@ RUN printf "\n" | pecl install yaml-2.0.0 \
 # Install additional scripts (composer and phpunit)
 COPY scripts /src
 RUN cd /src && chmod 770 *.sh
-RUN /src/composer.sh
-RUN /src/phpunit.sh
+#RUN /src/composer.sh
+#RUN /src/phpunit.sh
+RUN /src/xdebug.sh
 
 EXPOSE 9000
 
