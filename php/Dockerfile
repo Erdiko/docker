@@ -1,13 +1,14 @@
 ############################################################
-# PHP FPM Container
+# PHP FPM Container with Xdebug
 #
 # Contains common and useful...
-# php extensions: mcrypt, gd, mysql
+# php extensions: mcrypt, gd, mysql, xdebug
 # linux packages: mysql-client, git, curl, wget, pwgen
 #
 # This is a good container for php development and includes
-# common tools needed in a PHP app.  Use with or without
-# Erdiko.  It is lean enough for prod or dev.
+# common tools needed in a PHP app.  It also includes Xdebug
+# for easier PHP debugging.  Use with or without Erdiko.
+# Since it contains Xdebug DO NOT USE IN PRODUCTION
 ############################################################
 
 FROM php:7.1-fpm
