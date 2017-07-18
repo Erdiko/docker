@@ -3,4 +3,4 @@ version: '2.1'
 services:
   webserver:
     container_name: erdiko_nginx
-    image: erdiko/nginx:latest
+    build: ./
