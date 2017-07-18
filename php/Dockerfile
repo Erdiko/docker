@@ -42,6 +42,7 @@ COPY scripts /src
 RUN cd /src && chmod 770 *.sh
 RUN /src/composer.sh
 RUN /src/phpunit.sh
+RUN /src/xdebug.sh
 
 EXPOSE 9000
 
