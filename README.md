@@ -1,40 +1,41 @@
-# Docker
-Docker images and container scripts
+# Erdiko Docker
 
-### XDebug configuration
-Into this branch has been installed and enabled XDebug.
+## Docker images and container scripts
 
-Before to start make sure if is enabled XDebug into the PHP container:
+See them all on [Dockerhub](https://hub.docker.com/u/erdiko/dashboard/)
 
-```
-$ php -i | grep xdebug
-```
+## PHP-FPM
 
-The remote_host value is setup dinamically, so only is necessary set in your IDE  the remote folders, (e.g. PHPStorm).
+Example
 
-Go to "Run -> Edit Configurations", then select the green plus icon and select "PHP Web Application"
+    erdiko/php-fpm:latest
 
-![alt text](/images/create_web_application.png "Create Debug Config")
+[Dockerhub](https://hub.docker.com/r/erdiko/php-fpm/)
 
-Create a new Server e.g. for user-admin:
+[Anchore Analysis](https://anchore.io/image/dockerhub/erdiko%2Fphp-fpm%3Alatest)
 
-IMPORTANT: Check "User Path Mappings"
+## Angular
 
-![alt text](/images/path_mappings.png "Set Path Mappings")
+Example
 
+    erdiko/angular:latest
 
-To use XDebug on CLI:
+[Dockerhub](https://hub.docker.com/r/erdiko/angular/)
 
-Make sure that you have this ENV var into the PHP container:
+## Continuous Integration
 
-```
-$ echo XDEBUG_CONFIG
-```
+### Docker Compose
 
-Then create a new Debug Configuration:
+Example
 
-Go to "Run -> Edit Configurations", then select the green plus icon and select "PHP Remote Debug"
+    erdiko/docker-compose:latest
 
-![alt text](/images/cli.png "CLI Config")
+[Dockerhub](https://hub.docker.com/r/erdiko/docker-compose/)
 
-Then just you need start the cli debug and execute something into the console, for example a PHPUnitTests
+### NGINX
+
+Example
+
+    erdiko/nginx:latest
+
+[Dockerhub](https://hub.docker.com/r/erdiko/nginx/)
