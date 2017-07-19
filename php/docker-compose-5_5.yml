@@ -1,7 +1,0 @@
-version: '2.1'
-
-services:
-  php:
-    container_name: erdiko_php_5_5
-    env_file: ../environment.env
-    image: erdiko/php-fpm:5.5
