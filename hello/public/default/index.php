@@ -1,3 +1,6 @@
 <?php
+$str = "Hello World";
 
-echo "Hello World";
+$str .= "!!!";
+
+echo $str;

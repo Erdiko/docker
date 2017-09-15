@@ -35,7 +35,6 @@ RUN apt-get update \
 
 RUN printf "\n" | pecl install yaml-2.0.0 \
     && docker-php-ext-enable yaml \
-    # && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini \
     && apt-get clean
 
 # Install additional scripts (composer and phpunit)
