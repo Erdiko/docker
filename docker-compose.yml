@@ -1,17 +1,19 @@
-version: '2'
+version: '2.1'
 
 services:
 
   data:
     image: busybox
     volumes:
-      - ../hello:/code
+      - ./hello:/code
 
   webserver:
     extends:
       file: ./nginx/docker-compose.yml
       service: webserver
     volumes_from: [data]
+    ports:
+      - "8080:80"
 
   php:
     container_name: erdiko_php
