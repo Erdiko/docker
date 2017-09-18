@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
 
@@ -14,6 +14,8 @@ services:
       file: ./nginx/docker-compose.yml
       service: webserver
     volumes_from: [data]
+    ports:
+      - "8080:80"
 
   php:
     container_name: erdiko_php
