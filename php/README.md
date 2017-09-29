@@ -1,16 +1,16 @@
-# PHP-FPM w/ Xdebug
+# PHP-FPM w/ Xdebug (for MacOS)
 
 Docker image for PHP-FPM that contains Xdebug
 
 To use this image, use the the xdebug tag.  For example:
 
 ```
-erdiko/php-fpm:latest-xdebug
+erdiko/php-fpm:7.1-xdebug-mac
 ```
 
 ## Xdebug configuration
 
-Once you have a running container using the erdiko/php-fpm:latest-xdebug image you will need to configure your IDE to use Xdebug.  The instructions below are for PHPStorm, but you can use with any IDE or client that supports Xdebug.
+Once you have a running container using the erdiko/php-fpm:7.1-xdebug-mac image you will need to configure your IDE to use Xdebug.
 
 Before you start make sure Xdebug is enabled in the PHP container.  Inside the container run:
 
@@ -18,13 +18,19 @@ Before you start make sure Xdebug is enabled in the PHP container.  Inside the c
 $ php -i | grep xdebug
 ```
 
-The remote_host value is setup dynamically, so only is necessary set in your IDE the remote folders, (e.g. PHPStorm).
+The remote_host value is setup dynamically, so only is necessary set in your IDE the remote folders and port.
 
-Go to "Run -> Edit Configurations", then select the green plus icon and select "PHP Web Application"
+#### In PHPStorm
 
-![Create Debug Config](images/create_web_application.png "Create Debug Config")
+Start changing in the global debug configuration the port to 9001, go to global preferences (Cmd+,)
 
-Create a new Server e.g. for user-admin:
+![Change Port](images/xdebug_mac_pref.png "Change Port")
+
+Two simple steps to add remote configurations, start going to “Run -> Edit Configurations” menu,
+click on green plus sign, and select “PHP Remote Debug”.
+In the new Remote, fill the Name field (I will use docker) and in the “Ide Key (session id)” put PHPSTORM.
+
+![Create Debug Config](images/run_debug_configurations.png "Create Debug Config")
 
 IMPORTANT: Check "User Path Mappings"
 
@@ -38,10 +44,16 @@ Make sure that you have this ENV var into the PHP container:
 $ echo XDEBUG_CONFIG
 ```
 
-Then create a new Debug Configuration:
-
-Go to "Run -> Edit Configurations", then select the green plus icon and select "PHP Remote Debug"
-
-![CLI Config](images/cli.png "CLI Config")
-
 Then just you need start the cli debug and execute something into the console, for example a PHPUnitTests
+
+#### In MacGDBp
+
+Just open the app, go to preferences and change the port to 9001
+
+![Change Port](images/MacGDBp_pref_port.png "Change Port")
+
+then set map the path to your local filesystem
+
+![Change Path](images/MacGDBp_pref_path.png "Change Path")
+
+finally restart the app and happy debug!
