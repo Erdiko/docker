@@ -10,15 +10,16 @@
 # Erdiko.  It is lean enough for prod or dev.
 ############################################################
 
-FROM erdiko/php-fpm:latest
+FROM erdiko/php-fpm:7.1
 
 # File Author / Maintainer
 MAINTAINER John Arroyo, john@arroyolabs.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update \
-    && apt-get install -y libicu-dev \
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get install -y libicu-dev \
       libxslt-dev \
       libjpeg-dev \
       libjpeg-turbo-progs \
@@ -28,11 +29,12 @@ RUN apt-get update \
       intl \
       soap \
       zip \
-      simplexml \
-      libfreetype
+      simplexml
 
 RUN docker-php-ext-configure gd --with-jpeg-dir=DIR --with-freetype-dir=/usr/include/ \
     && docker-php-ext-install gd
+
+# RUN docker-php-ext-install libfreetype
 
 EXPOSE 9000
 
