@@ -1,5 +1,5 @@
 ############################################################
-# PHP FPM Container
+# PHP FPM Container for Magento 2
 #
 # Contains common and useful...
 # php extensions: mcrypt, gd, mysql
@@ -10,7 +10,7 @@
 # Erdiko.  It is lean enough for prod or dev.
 ############################################################
 
-FROM php:7.2-fpm
+FROM erdiko/php-fpm:latest
 
 # File Author / Maintainer
 MAINTAINER John Arroyo, john@arroyolabs.com
@@ -18,30 +18,21 @@ MAINTAINER John Arroyo, john@arroyolabs.com
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-    && apt-get install -y wget \
-        git \
-        mysql-client \
-        pwgen \
-        libmcrypt-dev \
-        libpng-dev \
-        zip \
-        libyaml-dev \
-    && docker-php-ext-install mysqli \
-        pdo_mysql \
-        mcrypt \
-        mbstring \
-        gd
+    && apt-get install -y libicu-dev \
+      libxslt-dev \
+      libjpeg-dev \
+      libjpeg-turbo-progs \
+      libxml2-dev \
+      libfreetype6-dev \
+    && docker-php-ext-install xsl \
+      intl \
+      soap \
+      zip \
+      simplexml \
+      libfreetype
 
-RUN printf "\n" | pecl install yaml-2.0.0 \
-    && docker-php-ext-enable yaml \
-    # && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini \
-    && apt-get clean
-
-# Install additional scripts (composer and phpunit)
-COPY scripts /src
-RUN cd /src && chmod 770 *.sh
-RUN /src/composer.sh
-RUN /src/phpunit.sh
+RUN docker-php-ext-configure gd --with-jpeg-dir=DIR --with-freetype-dir=/usr/include/ \
+    && docker-php-ext-install gd
 
 EXPOSE 9000
 
