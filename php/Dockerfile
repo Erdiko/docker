@@ -19,6 +19,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
     && apt-get install -y wget \
+        apt-utils \
         git \
         mysql-client \
         pwgen \
@@ -28,7 +29,6 @@ RUN apt-get update \
         libyaml-dev \
     && docker-php-ext-install mysqli \
         pdo_mysql \
-        mcrypt \
         mbstring \
         gd
 
