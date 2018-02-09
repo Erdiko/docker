@@ -16,4 +16,4 @@ RUN apt-get update && apt-get upgrade -y
 RUN npm install npm
 
 # Install ngx-cli
-RUN npm install -g @angular/cli && apt-get clean
+RUN npm install -g @angular/cli@latest && apt-get clean
