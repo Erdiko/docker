@@ -1,5 +1,5 @@
 ############################################################
-# PHP FPM Container for Magento 2 Front End Development
+# PHP FPM image for Magento 2 front-end development
 #
 # Contains common and useful...
 # php extensions: mcrypt, gd, mysql
@@ -9,12 +9,12 @@
 
 FROM erdiko/php-fpm:7.1-magento
 
-MAINTAINER John Arroyo, john@arroyolabs.com
+LABEL maintainer="John Arroyo <john@arroyolabs.com>" description="PHP-FPM for Magento 2 front-end development"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-  apt-get install -y nodejs \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - 
+RUN apt-get install -y nodejs \
   apt-get install -y build-essential \
   npm install -g grunt-cli
 
