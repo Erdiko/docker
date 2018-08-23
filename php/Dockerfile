@@ -32,7 +32,7 @@ RUN apt-get install -y libicu-dev \
       simplexml
 
 RUN docker-php-ext-configure gd --with-jpeg-dir=DIR --with-freetype-dir=/usr/include/ \
-    && docker-php-ext-install gd
+    && docker-php-ext-install gd bcmath
 
 # RUN docker-php-ext-install libfreetype
 
