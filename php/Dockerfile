@@ -10,7 +10,7 @@
 # Symfony, and more. It is lean enough for production use.
 ############################################################
 
-FROM php:7.3-fpm
+FROM php:7.2-fpm
 
 # File Author / Maintainer
 MAINTAINER John Arroyo, john@arroyolabs.com
