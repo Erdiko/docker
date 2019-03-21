@@ -10,7 +10,7 @@ docker pull erdiko/php-fpm:latest
 
 Checkout the tags to see the latest options.  We have tags for major PHP releases as well as specialty tags for xdebug and magento.
 
-* PHP 7.3
+* PHP 7.3, latest
 ```
 docker pull erdiko/php-fpm:7.3
 ```
