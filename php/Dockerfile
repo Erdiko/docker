@@ -2,8 +2,8 @@
 # PHP FPM Container
 #
 # Contains common and useful packages...
-# php extensions: mcrypt, gd, mysql
-# linux packages: mysql-client, git, curl, wget, pwgen
+# php extensions: gd, mysql, mbstring
+# linux packages: mysql-client, zip, curl, wget, pwgen
 #
 # This is a good container for php development and includes
 # common tools needed in a PHP app. Use with Laravel, Slim
@@ -20,10 +20,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get install -y wget \
         apt-utils \
-        git \
         mysql-client \
         pwgen \
-        libmcrypt-dev \
         libpng-dev \
         zip \
         libyaml-dev \
@@ -32,7 +30,7 @@ RUN apt-get update \
         mbstring \
         gd
 
-RUN printf "\n" | pecl install yaml-2.0.0 \
+RUN printf "\n" | pecl install yaml-2.0.4 \
     && docker-php-ext-enable yaml \
     # && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini \
     && apt-get clean
