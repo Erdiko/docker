@@ -1,59 +1,22 @@
-# PHP-FPM w/ Xdebug (for MacOS)
+# PHP-FPM Image
 
-Docker image for PHP-FPM that contains Xdebug
+Docker image for PHP-FPM with included packages most often used with MVC frameworks such as Laravel, Symfony, Slim and Erdiko.  These images are also well suited for popular applications like Magento, Drupal and WordPress. 
 
-To use this image, use the the xdebug tag.  For example:
-
-```
-erdiko/php-fpm:7.1-xdebug-mac
-```
-
-## Xdebug configuration
-
-Once you have a running container using the erdiko/php-fpm:7.1-xdebug-mac image you will need to configure your IDE to use Xdebug.
-
-Before you start make sure Xdebug is enabled in the PHP container.  Inside the container run:
+To use this image:
 
 ```
-$ php -i | grep xdebug
+docker pull erdiko/php-fpm:7.2
 ```
 
-The remote_host value is setup dynamically, so only is necessary set in your IDE the remote folders and port.
+Checkout the tags to see the latest options.  We have tags for major PHP releases as well as specialty tags for xdebug and magento.
 
-#### In PHPStorm
+* PHP 7.2
+* PHP 7.1
+* PHP 7.0
+* PHP 5.6
+* PHP 5.5
+* PHP 5.4
+* Magento (PHP 7.1)
+* Xdebug 
 
-Start changing in the global debug configuration the port to 9001, go to global preferences (Cmd+,)
-
-![Change Port](images/xdebug_mac_pref.png "Change Port")
-
-Two simple steps to add remote configurations, start going to “Run -> Edit Configurations” menu,
-click on green plus sign, and select “PHP Remote Debug”.
-In the new Remote, fill the Name field (I will use docker) and in the “Ide Key (session id)” put PHPSTORM.
-
-![Create Debug Config](images/run_debug_configurations.png "Create Debug Config")
-
-IMPORTANT: Check "User Path Mappings"
-
-![Set Path Mappings](images/path_mappings.png "Set Path Mappings")
-
-To use Xdebug on CLI:
-
-Make sure that you have this ENV var into the PHP container:
-
-```
-$ echo XDEBUG_CONFIG
-```
-
-Then just you need start the cli debug and execute something into the console, for example a PHPUnitTests
-
-#### In MacGDBp
-
-Just open the app, go to preferences and change the port to 9001
-
-![Change Port](images/MacGDBp_pref_port.png "Change Port")
-
-then set map the path to your local filesystem
-
-![Change Path](images/MacGDBp_pref_path.png "Change Path")
-
-finally restart the app and happy debug!
+Sponsored by Arroyo Labs, https://www.arroyolabs.com

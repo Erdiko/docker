@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  protractor:
+    build: .
+    env_file: environment.env
+    volumes:
+      - /dev/shm:/dev/shm
