@@ -7,10 +7,10 @@
 #
 # This is a good container for php development and includes
 # common tools needed in a PHP app. Use with Laravel, Slim
-# Symfony, or Erdiko. It is lean enough for production use.
+# Symfony, and more. It is lean enough for production use.
 ############################################################
 
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 # File Author / Maintainer
 MAINTAINER John Arroyo, john@arroyolabs.com
