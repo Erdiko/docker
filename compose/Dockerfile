@@ -1,25 +1,36 @@
 ############################################################
-# Docker Compose Container
+# Docker Compose Container for CI / CD
 #
 # Simple container for continuous integration that includes
-# Docker and Docker Compose
+# Docker and Compose
 ############################################################
 
-FROM ubuntu:16.10
+FROM ubuntu:18.04
 
 # File Author / Maintainer
-MAINTAINER John Arroyo, john@arroyolabs.com
+MAINTAINER John Arroyo, john.arroyo@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y curl git wget
 
-RUN VER="17.03.1-ce" && \
-    curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz && \
-    tar -xz -C /tmp -f /tmp/docker-$VER.tgz && \
-    mv /tmp/docker/* /usr/bin
+RUN apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
 
-RUN curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+RUN add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+RUN apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io
+
+RUN curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
     chmod +x /usr/local/bin/docker-compose
 
 RUN mkdir /code && apt-get clean
