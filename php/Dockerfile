@@ -36,7 +36,8 @@ RUN apt-get update \
         pdo_mysql \
         mbstring \
         bcmath \
-        gd
+        gd \
+        opcache
 
 RUN printf "\n" | pecl install yaml-2.1.0 \
     && docker-php-ext-enable yaml \
