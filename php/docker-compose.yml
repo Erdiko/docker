@@ -1,7 +1,6 @@
-version: '2.1'
+version: '3.7'
 
 services:
   php:
-    image: erdiko/php-fpm:7.2
     container_name: erdiko_php
-    env_file: ../environment.env
+    build: ./

@@ -13,20 +13,21 @@
 FROM php:7.3-fpm
 
 # File Author / Maintainer
-MAINTAINER John Arroyo, john@arroyolabs.com
+MAINTAINER John Arroyo, john.arroyo@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
     && apt-get install -y wget \
         apt-utils \
-        mysql-client \
+        default-mysql-client \
         pwgen \
         libfreetype6-dev \
         libwebp-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
         zip \
+        unzip \
         libyaml-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-webp-dir=/usr/include/  --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install mysqli \
@@ -34,9 +35,8 @@ RUN apt-get update \
         mbstring \
         gd
 
-RUN printf "\n" | pecl install yaml-2.0.4 \
+RUN printf "\n" | pecl install yaml-2.1.0 \
     && docker-php-ext-enable yaml \
-    # && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini \
     && apt-get clean
 
 # Install additional scripts (composer and phpunit)
@@ -45,7 +45,7 @@ RUN cd /src && chmod 770 *.sh
 RUN /src/composer.sh
 RUN /src/phpunit.sh
 
-RUN echo cd /code >> $HOME/.bashrc
+RUN mkdir /code && echo cd /code >> $HOME/.bashrc
 
 EXPOSE 9000
 
