@@ -10,7 +10,7 @@
 # Symfony, and more. It is lean enough for production use.
 ############################################################
 
-FROM php:7.3-fpm
+FROM php:7.4-fpm
 
 # File Author / Maintainer
 MAINTAINER John Arroyo, john.arroyo@gmail.com
@@ -26,13 +26,16 @@ RUN apt-get update \
         libwebp-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
+        libonig-dev \
         zip \
         unzip \
+        git \
         libyaml-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-webp-dir=/usr/include/  --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install mysqli \
         pdo_mysql \
         mbstring \
+        bcmath \
         gd
 
 RUN printf "\n" | pecl install yaml-2.1.0 \
