@@ -16,8 +16,7 @@ php composer-setup.php --quiet
 RESULT=$?
 rm composer-setup.php
 
-# Convenient alias (add by Erdiko)
+# Move to bin for convenient use (not part of official install script above)
 mv composer.phar /usr/local/bin/composer
-alias composer='php /usr/local/bin/composer'
 
 exit $RESULT
