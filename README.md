@@ -2,7 +2,7 @@
 
 ## Docker images and container scripts
 
-See them all on [Dockerhub](https://hub.docker.com/u/erdiko/dashboard/)
+See them all on [Dockerhub](https://hub.docker.com/u/erdiko)
 
 ## PHP-FPM
 
@@ -11,8 +11,6 @@ Example
     erdiko/php-fpm:latest
 
 [Dockerhub](https://hub.docker.com/r/erdiko/php-fpm/)
-
-[Anchore Analysis](https://anchore.io/image/dockerhub/erdiko%2Fphp-fpm%3Alatest)
 
 ## Angular
 
