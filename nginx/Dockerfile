@@ -5,7 +5,7 @@
 # contained webserver for continuous integration
 ############################################################
 
-FROM nginx:latest
+FROM nginx:1.29.4-trixie
 
 # File Author / Maintainer
 MAINTAINER John Arroyo, info@arroyolabs.com
